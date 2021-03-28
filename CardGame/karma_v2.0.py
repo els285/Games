@@ -91,9 +91,9 @@ class Player:
     def Execute(self,played_pile,unused_deck):
 
         
-        if self.status == "facedown":
-            print(self.temp_hand)
-            input()
+        # if self.status == "facedown":
+        #     print(self.temp_hand)
+        #     input()
 
         
         # If played_pile empty, any card can be played
@@ -102,13 +102,13 @@ class Player:
             card2play = self.SelectBest(self.temp_hand,input_card_value)
             played_pile , unused_deck = self.Play(card2play,played_pile,unused_deck)
 
-            if self.status == "facedown":
-                print(card2play)
-                print(self.temp_hand)
-                print(self.current_hand)
-                print(self.faceup_hand)
-                print(self.facedown_hand)
-                input()
+            # if self.status == "facedown":
+            #     print(card2play)
+            #     print(self.temp_hand)
+            #     print(self.current_hand)
+            #     print(self.faceup_hand)
+            #     print(self.facedown_hand)
+            #     input()
 
         # If played_pile not empty, card must meet requirement
         elif len(played_pile) > 0:
@@ -127,13 +127,13 @@ class Player:
 
 
             
-            if self.status == "facedown":
-                print(card2play)
-                print(self.temp_hand)
-                print(self.current_hand)
-                print(self.faceup_hand)
-                print(self.facedown_hand)
-                input()
+            # if self.status == "facedown":
+            #     print(card2play)
+            #     print(self.temp_hand)
+            #     print(self.current_hand)
+            #     print(self.faceup_hand)
+            #     print(self.facedown_hand)
+            #     input()
 
         return played_pile,unused_deck
 
@@ -151,7 +151,6 @@ class Player:
             # This means that all in-hand cards have been played
             # Therefore construct new hand
             print("option faceup")
-            # input()
             self.status = "faceup"
             self.temp_hand = self.faceup_hand
             played_pile,unused_deck = self.Execute(played_pile,unused_deck)
@@ -191,9 +190,10 @@ def Karma_Deal(deck_of_cards,list_of_players):
 Ethan = Player("Ethan")
 Jess  = Player("Jess")
 Leo   = Player("Leo")
+Garry = Player("Garry")
 
 
-list_of_players = [Ethan,Jess,Leo]
+list_of_players = [Ethan,Jess,Leo,Garry]
 
 class Game:
 
@@ -223,19 +223,14 @@ class Game:
         while not GameWon:
             for player in self.list_of_players:
                 print(str(player.name) + " playing...")
-                # print("BEfore hand")
-                # print(player.current_hand)
+
                 self.played_pile,self.remaining_deck = player.PlayLowest(self.played_pile,self.remaining_deck)
-                # print("After hand")
-                # print(player.current_hand)
-                # print("Played cards pile")
-                # print(self.played_pile)
-                # input()
 
                 if len(player.facedown_hand) == 0:
                     print("WE HAVE A WINNER")
                     GameWon = True
                     Winner  = player
+                    break
 
             print("\n")
             # input()
