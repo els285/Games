@@ -34,10 +34,20 @@ for y in range(5,21):
 
 
 import pandas as pd
+# print(d)
+# input()
 
-standard_Strategy = pd.DataFrame(
-    data={'Strategy': list(d.values())}, 
-    index=pd.MultiIndex.from_tuples(tuples=d.keys(), names=['Player Total', 'Dealer Total'])
-)
+standard_Strategy = d
 
+
+# standard_Strategy = pd.DataFrame(
+#     data={'Strategy': list(d.values())}, 
+#     index=pd.MultiIndex.from_tuples(tuples=d.keys(), names=['Player Total', 'Dealer Total'])
+# )
+
+
+
+# df = standard_Strategy
+# print(df.ix[df.index.get_level_values('Player Total') == 5 & df.index.get_level_values('Dealer Total') == 2])
+# input()
 
